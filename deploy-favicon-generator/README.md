@@ -10,7 +10,7 @@ tags:
 
 ## はじめに
 
-この前[blog.s2n.tech v2 をリリースしました](blog-v2)が，
+この前[blog.s2n.tech v2 をリリースしました](/articles/blog-v2)が，
 その時に動的に OGP 画像を生成するために @vercel/og というライブラリを使用しました．
 
 @vercel/og は大まかには JSX を SVG に変換する処理と SVG を PNG に変換する処理を内部で行っているのですが，
