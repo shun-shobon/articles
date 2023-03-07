@@ -87,8 +87,8 @@ JSX を使って普段の React と同じ用にコンポーネントを与える
 
 かなりお手軽につかえて便利……と思いきや，デフォルトでは日本語フォントが含まれていないので，日本語を含む OGP 画像を生成するにはフォントを追加する必要がありました．
 そして，日本語フォントというのは非常にファイルサイズが大きいので普通に使おうとすると Edge Function に載りません．
-
 (Edge Functions はスクリプトやアセットファイルを含めて hobby プランの場合最大 1MB の制限がある)
+
 `@vercel/og`とそれを扱うコードを合わせると大体 500KB ほどになるので，
 これにアイコンや背景用の画像を含めるとフォントファイル用の余裕はほぼありません．
 [参考にしていた記事](https://zenn.dev/hiromu617/articles/c03fef6f4d6c6e)ではフォントのサブセット化を事前に行い，
@@ -102,6 +102,8 @@ Google Fonts からサブセット化したフォントを動的に取得する�
 ところで，`@vercel/og`は Next.js の旧式の API Routing システムである`pages/api`を使っているのですが，
 新たな App Dir で使用できる`app/**/route.ts`での書き方がまだ使えないようです．
 というか何故か`route.ts`で`satori`を import しようとすると`satori`に default export が無いと怒られてしまうので謎です．(もちろん`satori`には default export があります)
+
+**2023/03/08 追記:** `@vercel/og@0.4.0`から`route.ts`での使用が可能になったようです．
 
 ### Next.js による React Server Component の使用
 
