@@ -78,11 +78,11 @@ https://twitter.com/shun_shobon/status/1586326865366507520
 でもオンサイトのコンテストは初参加だったので、企業ブースがあったり、他の人の発表を見に行ったり出来て面白かったです。
 来年は 5 年生なので関われるかも怪しいですが、もし関われたら後輩のサポートを全力でやりたいなと思います。
 
-https://twitter.com/shun_shobon/status/1580578050433257473
-
 https://twitter.com/shun_shobon/status/1581093409384587264
 
-https://twitter.com/shun_shobon/status/1581587958796210177
+![Gメッセ群馬](./gメッセ.jpg)
+
+![大量のノベルティグッズ](./procon.jpg)
 
 ### 工嶺祭
 
@@ -93,6 +93,8 @@ https://twitter.com/shun_shobon/status/1581587958796210177
 https://twitter.com/shun_shobon/status/1580815977045839873
 
 https://twitter.com/shun_shobon/status/1584565048508239872
+
+![工嶺祭](./工嶺祭.jpg)
 
 ## 冬
 
