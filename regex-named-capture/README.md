@@ -58,8 +58,8 @@ console.log(matches.groups.patch); // => 3
 
 ```js
 // バージョン番号がゾロ目かどうかを判定する
-const isSame = /v(?<version>\d+)\.\k<version>\.\k<version>/.test("v7.7.7");
-console.log(isSameNumber); // => true
+const areSame = /v(?<version>\d+)\.\k<version>\.\k<version>/.test("v7.7.7");
+console.log(areSame); // => true
 ```
 
 このように名前付きキャプチャグループを使うことで、キャプチャグループに分かりやすい名前を付けることができるため、
