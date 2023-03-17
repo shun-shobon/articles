@@ -19,13 +19,14 @@ Renovate は非常に高機能なツールで、GitHub Actions や Docker の更
 ただし、今の所 deno.land と npm にしか対応していません。
 もう少し正規表現を詰めれば他のレジストリにも対応できそうなので暇があればやってみます。
 
-```jsonc
+```json
 {
   // ...
   "regexManagers": [
     {
       "fileMatch": ["\\.tsx?$"],
       "matchStrings": [
+        // import|export ... from "https://deno.land/..." にマッチ
         "(?:im|ex)port(?:.|\\s)+?from\\s*['\"](?<depName>https://deno.land/.+?)@v?(?<currentValue>\\d+?\\.\\d+?\\.\\d+?).*?['\"]"
       ],
       "datasourceTemplate": "deno"
@@ -33,6 +34,7 @@ Renovate は非常に高機能なツールで、GitHub Actions や Docker の更
     {
       "fileMatch": ["^import_map.json$"],
       "matchStrings": [
+        // "...": "https://deno.land/..." にマッチ
         "\".+?\"\\s*:\\s*\"(?<depName>https://deno.land/.+?)@v?(?<currentValue>\\d+?\\.\\d+?\\.\\d+?).*?\""
       ],
       "datasourceTemplate": "deno"
@@ -40,6 +42,7 @@ Renovate は非常に高機能なツールで、GitHub Actions や Docker の更
     {
       "fileMatch": ["\\.tsx?$"],
       "matchStrings": [
+        // import|export ... from "npm:..." にマッチ
         "(?:im|ex)port(?:.|\\s)+?from\\s*['\"]npm:(?<depName>.+?)@(?<currentValue>\\d+?\\.\\d+?\\.\\d+?).*?['\"]"
       ],
       "datasourceTemplate": "npm"
@@ -47,6 +50,7 @@ Renovate は非常に高機能なツールで、GitHub Actions や Docker の更
     {
       "fileMatch": ["^import_map.json$"],
       "matchStrings": [
+        // "...": "npm:..." にマッチ
         "\".+?\"\\s*:\\s*\"npm:(?<depName>.+?)@(?<currentValue>\\d+?\\.\\d+?\\.\\d+?).*?\""
       ],
       "datasourceTemplate": "npm"
@@ -114,13 +118,14 @@ https://docs.renovatebot.com/modules/manager/regex/
 
 Deno では `npm:` から始めるパッケージ名で npm のパッケージをインポートできます。これにも対応してみましょう。
 
-```jsonc
+```json
 {
   // ...
   "regexManagers": [
     {
       "fileMatch": ["\\.tsx?$"],
       "matchStrings": [
+        // import/export 文の中で npm: から始まるパッケージ名とバージョンを取得
         "(?:im|ex)port(?:.|\\s)+?from\\s*['\"]npm:(?<depName>.+?)@(?<currentValue>\\d+?\\.\\d+?\\.\\d+?).*?['\"]"
       ],
       "datasourceTemplate": "npm"
@@ -128,6 +133,7 @@ Deno では `npm:` から始めるパッケージ名で npm のパッケージ�
     {
       "fileMatch": ["^import_map.json$"],
       "matchStrings": [
+        // import_map.json import_map.json の中で npm: から始まるパッケージ名とバージョンを取得
         "\".+?\"\\s*:\\s*\"npm:(?<depName>.+?)@(?<currentValue>\\d+?\\.\\d+?\\.\\d+?).*?\""
       ],
       "datasourceTemplate": "npm"
