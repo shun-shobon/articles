@@ -13,6 +13,14 @@ Renovate は非常に高機能なツールで、GitHub Actions や Docker の更
 残念ながら執筆現在は Deno の依存関係の更新には対応していません。
 今回はどうにかして Renovate で Deno の依存関係を自動で更新する方法を紹介します。
 
+先に動いてるものを見たい方は以下のリンクからどうぞ。
+
+https://github.com/shun-shobon/tmp/blob/5738ec1688051d28ec57518fb187e6c1423dd4da/renovate.json
+
+https://github.com/shun-shobon/tmp/pull/3
+
+https://github.com/shun-shobon/tmp/pull/5
+
 ### TL;DR
 
 この項目を追加すれば Renovate で Deno の依存関係の更新ができます。
