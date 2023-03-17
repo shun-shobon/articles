@@ -83,7 +83,7 @@ Deno ではパッケージ名がソースコード内か `import_map.json` に�
 
 ということで書いたものが以下の例です。
 
-```jsonc
+```json
 {
   // ...
   "regexManagers": [
