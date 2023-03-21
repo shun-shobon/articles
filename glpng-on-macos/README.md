@@ -39,7 +39,7 @@ gcc-11 --version
 
 そのままではライブラリをコンパイルできないので`src/`下の`Makefile.LINUX`と`glpng.c`を修正する。
 
-```diff
+```diff:makefile:src/Makefile.LINUX
  # (省略)...
 
 -CC	=	gcc
@@ -55,7 +55,7 @@ gcc-11 --version
  MOC	=	moc
 ```
 
-```diff
+```diff:c:src/glpng.c
  // (省略)...
 
 +#include <GLUT/glut.h>
@@ -72,7 +72,7 @@ gcc-11 --version
 
 `Example/`に`Test.c`というサンプルプログラムがあるが、これもそのままでは動かないので修正する。
 
-```diff
+```diff:c:Example/Test.c
  // (省略)...
 
  #include <gl/glpng.h>
