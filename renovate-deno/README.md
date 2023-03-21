@@ -15,11 +15,11 @@ Renovate は非常に高機能なツールで、GitHub Actions や Docker の更
 
 先に動いてるものを見たい方は以下のリンクからどうぞ。
 
-https://github.com/shun-shobon/tmp/blob/5738ec1688051d28ec57518fb187e6c1423dd4da/renovate.json
+https://github.com/shun-shobon/ci-playground/blob/5738ec1688051d28ec57518fb187e6c1423dd4da/renovate.json
 
-https://github.com/shun-shobon/tmp/pull/3
+https://github.com/shun-shobon/ci-playground/pull/3
 
-https://github.com/shun-shobon/tmp/pull/5
+https://github.com/shun-shobon/ci-playground/pull/5
 
 ### TL;DR
 
