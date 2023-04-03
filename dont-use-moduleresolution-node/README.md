@@ -50,9 +50,8 @@ JS ファイルが import されたとき、その JS ファイルに最も近�
 後述の`exports`フィールドを使用しない限り、ES Modules ではパッケージ内のファイルを直接指定して import する必要があります。
 
 `exports`フィールドは Node.js v12 以降で追加されたフィールドで、パッケージのエントリポイントを指定します。
-`main`との違いとして、`exports`フィールドは CommonJS と ES Modules でのエントリポイントを指定することができます。
+`main`との違いとして、`exports`フィールドは CommonJS と ES Modules でのエントリポイントを指定することができます(Conditional Exports)。
 また、サブパスを設定することもでき、`package/subpath`のような指定をした際のエントリポイントを指定することも可能です。
-さらに Conditional Exports という機能もあり、CommonJS と ES Modules でのエントリポイントを切り替えることも可能です。
 
 ```json
 {
