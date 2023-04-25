@@ -45,13 +45,13 @@ JS ファイルが import されたとき、その JS ファイルに最も近�
 
 `package.json` では`main`と`exports`という 2 つのフィールドによってパッケージのエントリポイントを指定することができます。
 
-`main`フィールドは Node.js で古くからあるフィールドで、CommonJS でのエントリポイントを指定します。
-一つ注意したいのが、**このフィールドは CommonJS でのみ使用され、ES Modules では使用されません。**
-後述の`exports`フィールドを使用しない限り、ES Modules ではパッケージ内のファイルを直接指定して import する必要があります。
+`main`フィールドは Node.js で古くからあるフィールドで、インポートした際のエントリポイントを指定します。これは CommonJS と ES Modules の両方で使用されます。
 
 `exports`フィールドは Node.js v12 以降で追加されたフィールドで、パッケージのエントリポイントを指定します。
 `main`との違いとして、`exports`フィールドは CommonJS と ES Modules でのエントリポイントを指定することができます(Conditional Exports)。
 また、サブパスを設定することもでき、`package/subpath`のような指定をした際のエントリポイントを指定することも可能です。
+
+**2023/04/26 追記:** `main`フィールドは CommonJS でしか使われないというような記述をしていましたが、不正確だったため修正しました。[@sapphi-red](https://github.com/sapphi-red)さん、ご指摘ありがとうございました。([該当 Issue](https://github.com/shun-shobon/articles/issues/1))
 
 ```json
 {
