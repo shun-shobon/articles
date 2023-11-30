@@ -43,9 +43,6 @@ https://koreisai.tech/
 当時私は3年生で実行委員会とは特に関わりは無かったのですが、友人のつながりで偶然私に話が回ってきて担当することになりました。
 そこから3年間、毎年工嶺祭のHPを作っています。
 
-私は今年で卒業なので、今回が最後のHP制作となります。
-来年に関してはどうなるか分かりませんが、個人的には今後もHPは続けていってほしいと思っています。
-
 ## 技術スタック
 
 今年のHPは以下の技術スタックで作成しました。他にもLinterやCI/CDなども使用していますが、そのあたりは後ほど紹介します。
@@ -230,7 +227,7 @@ export const program = style({
 なお、このReact LeafletはSSRに対応していないのですが、Next.jsではClient ComponentでもデフォルトでSSRされます。そのため、`next/dynamic`を用いてSSRを無効化するようにしています。
 
 ```tsx
-import dynamic from "next/dynamic";o
+import dynamic from "next/dynamic";
 
 const Map = dynamic(() => import("./_components/Map"), { ssr: false });
 
