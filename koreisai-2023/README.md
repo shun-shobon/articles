@@ -520,7 +520,7 @@ Cloudflare Pagesは無料で使うことができ、Zero Trust機能を組み合
 本番環境へのデプロイですが、これはReleaseを作成したタイミングで行っています。
 ReleaseをGitHub上で作成するとビルドが走り、ビルドされたものを学生会で管理しているレンタルサーバーにFTPでアップロードするようになっています。
 
-なお、Releaseの作成は[please-release](https://github.com/google-github-actions/release-please-action)というものを使用しています。
+なお、Releaseの作成は[release-please](https://github.com/google-github-actions/release-please-action)というものを使用しています。
 これはコミットメッセージから自動的に次にリリースするバージョンを決定してくれ、作られたPRをMergeすることでCHANGELOGやタグの作成も自動で行ってくれます。
 本来はライブラリのリリースに使うものですが、今回はReleaseの自動作成のために使用しています。
 
