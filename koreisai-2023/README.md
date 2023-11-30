@@ -337,6 +337,129 @@ return (
 );
 ```
 
+### フォント
+
+HP内では源ノ角ゴシックを使用しています。これはAdobeが公開しているオープンソースの日本語フォントです。
+
+Webフォント、特に日本語フォントはファイルサイズが大きくなりがちで、複数のウエイトを使用すると更にサイズがかさみます。
+そのため、今回はバリアブルフォントと呼ばれるフォントを使用しています。
+これは1つのフォントファイルに可変のウエイトを持たせることで、複数のウエイトを使用する際にファイルサイズを抑えることができます。
+
+https://ics.media/entry/201008/
+
+加えて、Next.jsの[Font Optimization機能](https://nextjs.org/docs/app/building-your-application/optimizing/fonts)を使用しています。
+これによってリクエストが最適化され、よりパフォーマンスを出すことができます。
+
+```tsx
+import localFont from "next/font/local";
+
+const font = localFont({
+  src: "../assets/SourceHanSansJP-VF.otf.woff2",
+  fallback: ["sans-serif"],
+});
+```
+
+### アクセス解析
+
+HPのアクセス解析にはGoogle Analyticsを使用しています。
+
+Google AnalyticsはGoogleが提供している無料のアクセス解析ツールで、アクセス数やユーザー数はもちろんのこと、どのページがどれだけ閲覧されたかなども確認することができます。
+
+アクセス数などをお見せすることはできませんが、非常に沢山の方に閲覧して頂いており、非常に嬉しい限りです。
+
+なお、それ以外にもページ上でエラーが発生した際にそれをイベントとして送信するようにしているため、エラーが発生した際にはすぐに気づくことができます。
+
+### エラー対策
+
+Next.jsは非常に便利ですが、スマホなどでタブを復帰させた際にエラーになってしまうことがあります。
+デフォルトのエラー画面は英語で分かりづらいので、自前のエラー画面を用意しています。
+
+App Routesでは`global-error.tsx`というファイルにエラー画面を定義することでエラーが発生した際にそれを表示することができます。
+
+なお、コンポーネントには`reset()`という関数が渡されており、これを呼ぶとリセット処理を走らせることができます。
+今回はそこまで複雑なロジックはなく、リセット処理だけでどうにかなることが多いと考えたため、エラー画面が呼ばれた時点で自動的にリセット処理が走るようにしています。
+それでもエラーが発生した場合にはユーザーにエラーが発生したことを知らせ、再読み込みを促すようにしています。
+また、エラー画面で放置した際には自動的にリロードするようにしています。
+
+```tsx
+"use client";
+
+import type { ReactNode } from "react";
+import { useEffect, useLayoutEffect } from "react";
+
+// このコンポーネントがレンダリングされると自動的にリセット処理が走る
+// リセット処理が走ってもエラーが発生している場合は、エラー画面が表示される
+let wasReset = false;
+
+type GlobalErrorProps = {
+  error: Error & { digest?: string };
+  reset: () => void;
+};
+
+export default function GlobalError({ reset }: GlobalErrorProps): ReactNode {
+  useLayoutEffect(() => {
+    if (wasReset) return;
+    wasReset = true;
+
+    /* †死者蘇生† */
+    reset();
+  }, [reset]);
+
+  useEffect(() => {
+    const id = setTimeout(() => {
+      window.location.reload();
+    }, 60 * 1000);
+
+    return () => {
+      clearTimeout(id);
+    };
+  }, []);
+
+  const handleReload = () => {
+    window.location.reload();
+  };
+
+  return (
+    <html lang="ja">
+      <body
+        style={{
+          width: "100%",
+          height: "100dvh",
+          display: "grid",
+          placeItems: "center",
+          padding: "1rem",
+        }}
+      >
+        <main
+          style={{
+            maxWidth: "80ch",
+            display: "grid",
+            placeItems: "center",
+            gap: "1rem",
+          }}
+        >
+          <p>
+            エラーが発生したようです。
+            再読み込みを行っても直らない場合は担当者に連絡してください。
+          </p>
+          <button
+            onClick={handleReload}
+            style={{
+              padding: "0.5rem 1rem",
+              border: "1px solid #ccc",
+              borderRadius: "5px",
+              cursor: "pointer",
+            }}
+          >
+            再読み込み
+          </button>
+        </main>
+      </body>
+    </html>
+  );
+}
+```
+
 ### LinterとFormatter
 
 開発中はコードの品質を保つためにESLintとPrettierを使用していました。
