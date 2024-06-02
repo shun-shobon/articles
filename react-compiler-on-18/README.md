@@ -4,15 +4,17 @@ tags:
   - React
 ---
 
-# React 18でReact Compilerを使う&一部のコンポーネントだけReact Compilerで最適化する方法
+# React v18でReact Compilerを使う&一部のコンポーネントだけReact Compilerで最適化する方法
 
 ## はじめに
 
 先日、React Compilerがオープンソースになり、誰でも利用できるようになりました。
 しかしながら、React CompilerはReactのベータ版が必要になり、本番環境でガッツリ利用するのは少し難しいです。
 
-そこで、今回はReact CompilerをReact 18でも利用できるようにする方法を紹介します。
+そこで、今回はReact CompilerをReact v18でも利用できるようにする方法を紹介します。
 また、一度に全てのコンポーネントをReact Compilerで最適化するのは、リスクを伴うため、一部のコンポーネントだけをReact Compilerで最適化する方法も紹介します。
+
+なお、React Compiler自体がまだベータ版であることに留意してください。
 
 ## React Compilerとは
 
@@ -58,9 +60,9 @@ export default defineConfig({
 `"babel-plugin-react-compiler"`の隣の空オブジェクトはオプションです。React 18でReact Compilerを使う場合は追加の設定が必要なので、後で解説します。
 Reactのbeta版を使う場合はこれで設定は完了です。
 
-## React 18でReact Compilerを使う
+## React v18でReact Compilerを使う
 
-ここからはReact 18でReact Compilerを使うための設定方法を紹介します。
+ここからはReact v18でReact Compilerを使うための設定方法を紹介します。
 まず、React Compilerではコンパイル後のコードに`c`という関数が追加されるため、それを追加する必要があります。[^2]
 
 [^2]: 実際には`_c`という関数になっていますが、ベータ版に含まれる`c`関数の実装である`react-compiler-runtime`には`c`として定義されているため、ここでは`c`として説明します。
@@ -177,7 +179,7 @@ function MyComponent() {
 
 ## まとめ
 
-今回はReact 18でReact Compilerを使う方法と、一部のコンポーネントだけをReact Compilerで最適化する方法を紹介しました。
+今回はReact v18でReact Compilerを使う方法と、一部のコンポーネントだけをReact Compilerで最適化する方法を紹介しました。
 React Compilerはまだベータ版であり、本番環境で利用するのはリスクが伴いますが、徐々に導入していくことでパフォーマンス向上が期待できます。
 
 また、React Compilerの中身を[@yossydev](https://x.com/yossydev)、[@re_taro_](https://x.com/re_taro_)と一緒に読む動画も公開しているので、興味があればぜひご覧ください。
