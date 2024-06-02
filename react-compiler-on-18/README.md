@@ -185,3 +185,7 @@ React Compilerはまだベータ版であり、本番環境で利用するのは
 また、React Compilerの中身を[@yossydev](https://x.com/yossydev)、[@re_taro_](https://x.com/re_taro_)と一緒に読む動画も公開しているので、興味があればぜひご覧ください。
 
 https://www.youtube.com/watch?v=PqPgr_hlVKM
+
+## 参考
+
+- https://github.com/reactwg/react-compiler/discussions/6
