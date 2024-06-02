@@ -81,15 +81,15 @@ const $empty = Symbol.for("react.memo_cache_sentinel");
  * official API. Please upgrade to React 19 as soon as you can.
  */
 export function c(size: number) {
-	return useState(() => {
-		const $ = new Array(size);
-		for (let ii = 0; ii < size; ii++) {
-			$[ii] = $empty;
-		}
-		// @ts-ignore
-		$[$empty] = true;
-		return $;
-	})[0];
+  return useState(() => {
+    const $ = new Array(size);
+    for (let ii = 0; ii < size; ii++) {
+      $[ii] = $empty;
+    }
+    // @ts-ignore
+    $[$empty] = true;
+    return $;
+  })[0];
 }
 ```
 
@@ -109,8 +109,8 @@ export default defineConfig({
           [
             "babel-plugin-react-compiler",
             {
-							runtimeModule: path.resolve("src/react-compiler-runtime"),
-						},
+              runtimeModule: path.resolve("src/react-compiler-runtime"),
+            },
           ],
         ],
       },
@@ -147,9 +147,9 @@ export default defineConfig({
           [
             "babel-plugin-react-compiler",
             {
-							runtimeModule: path.resolve("src/react-compiler-runtime"),
+              runtimeModule: path.resolve("src/react-compiler-runtime"),
               compilationMode: "annotation",
-						},
+            },
           ],
         ],
       },
